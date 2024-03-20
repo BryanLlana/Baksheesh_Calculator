@@ -5,7 +5,7 @@ import { useOrder } from "./hooks/useOrder"
 import OrderContents from './components/OrderContents';
 
 const App = () => {
-  const { orders, addItem } = useOrder()
+  const { orders, addItem, deleteItem } = useOrder()
   return (
     <>
       <Header />
@@ -20,7 +20,7 @@ const App = () => {
           </div>
         </div>
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-5">
-          <OrderContents orders={orders} />
+          <OrderContents orders={orders} deleteItem={deleteItem}/>
         </div>
       </main>
     </>

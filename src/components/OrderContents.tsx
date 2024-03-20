@@ -1,10 +1,11 @@
 import { OrderItem } from "../types"
 
 type Props = {
-  orders: OrderItem[]
+  orders: OrderItem[],
+  deleteItem: (id: number) => void
 }
 
-const OrderContents = ({ orders }: Props) => {
+const OrderContents = ({ orders, deleteItem }: Props) => {
   return (
     <div>
       <h2 className="font-bold text-4xl">Consumo</h2>
@@ -19,6 +20,7 @@ const OrderContents = ({ orders }: Props) => {
             </div>
             <button
               className="bg-red-600 h-8 w-8 rounded-full text-white font-bold"
+              onClick={() => deleteItem(order.id)}
             >X
             </button>
           </div>

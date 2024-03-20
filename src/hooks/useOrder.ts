@@ -25,8 +25,14 @@ export const useOrder = () => {
     }
   }
 
+  const deleteItem = (id: number) => {
+    const updateOrders = orders.filter(order => order.id !== id)
+    setOrders(updateOrders)
+  }
+
   return {
     orders,
-    addItem
+    addItem,
+    deleteItem
   }
 }
