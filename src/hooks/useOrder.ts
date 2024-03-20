@@ -26,6 +26,7 @@ export const useOrder = () => {
   }
 
   return {
+    orders,
     addItem
   }
 }
