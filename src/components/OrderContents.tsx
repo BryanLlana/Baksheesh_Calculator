@@ -1,3 +1,4 @@
+import { formatNumberToPen } from "../helpers"
 import { OrderItem } from "../types"
 
 type Props = {
@@ -15,8 +16,8 @@ const OrderContents = ({ orders, deleteItem }: Props) => {
         : ( orders.map(order => (
           <div key={order.id} className="flex justify-between items-center border-t border-gray-200 py-3 last-of-type:border-b">
             <div>
-              <p className="text-lg">{order.name} - {order.price}</p>
-              <p className="font-bold">Cantidad: {order.quantity} - {order.quantity * order.price}</p>
+              <p className="text-lg">{order.name} - {formatNumberToPen(order.price)}</p>
+              <p className="font-bold">Cantidad: {order.quantity} - {formatNumberToPen(order.quantity * order.price)}</p>
             </div>
             <button
               className="bg-red-600 h-8 w-8 rounded-full text-white font-bold"
