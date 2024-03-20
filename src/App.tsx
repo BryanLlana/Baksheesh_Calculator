@@ -3,9 +3,10 @@ import MenuItem from "./components/MenuItem"
 import { menuItems } from "./data"
 import { useOrder } from "./hooks/useOrder"
 import OrderContents from './components/OrderContents';
+import OrderTotals from "./components/OrderTotals";
 
 const App = () => {
-  const { orders, addItem, deleteItem } = useOrder()
+  const { orders, subTotal, addItem, deleteItem } = useOrder()
   return (
     <>
       <Header />
@@ -21,6 +22,7 @@ const App = () => {
         </div>
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-5">
           <OrderContents orders={orders} deleteItem={deleteItem}/>
+          <OrderTotals subTotal={subTotal}/>
         </div>
       </main>
     </>

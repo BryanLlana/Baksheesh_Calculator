@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { MenuItem, OrderItem } from "../types"
 
 export const useOrder = () => {
@@ -30,8 +30,11 @@ export const useOrder = () => {
     setOrders(updateOrders)
   }
 
+  const subTotal = useMemo(() => orders.reduce((total, order) => total + (order.price * order.quantity), 0), [orders])
+
   return {
     orders,
+    subTotal,
     addItem,
     deleteItem
   }
