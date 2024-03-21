@@ -6,7 +6,7 @@ type Props = {
   addItem: (item: MenuItem) => void
 }
 
-const MenuItem = ({ item, addItem }: Props) => {
+const MenuItemComponent = ({ item, addItem }: Props) => {
   const { name, price } = item
   return (
     <button
@@ -19,4 +19,4 @@ const MenuItem = ({ item, addItem }: Props) => {
   )
 }
 
-export default MenuItem
+export default MenuItemComponent
