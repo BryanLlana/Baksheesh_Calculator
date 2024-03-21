@@ -1,10 +1,11 @@
 import { formatNumberToPen } from "../helpers"
 
 type Props = {
-  subTotal: number
+  subTotal: number,
+  tipTotal: number
 }
 
-const OrderTotals = ({ subTotal }: Props) => {
+const OrderTotals = ({ subTotal, tipTotal }: Props) => {
   return (
     <>
       <div className="space-y-3">
@@ -13,7 +14,7 @@ const OrderTotals = ({ subTotal }: Props) => {
           <span className="font-bold"> {formatNumberToPen(subTotal)}</span>
         </p>
         <p>Propina: 
-          <span className="font-bold"> 0</span>
+          <span className="font-bold"> {formatNumberToPen(tipTotal)}</span>
         </p>
       </div>
     </>

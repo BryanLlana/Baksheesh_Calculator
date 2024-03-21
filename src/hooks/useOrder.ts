@@ -3,6 +3,7 @@ import { MenuItem, OrderItem } from "../types"
 
 export const useOrder = () => {
   const [orders, setOrders] = useState<OrderItem[]>([])
+  const [tip, setTip] = useState(0)
   
   const addItem = (item: MenuItem): void => {
     const menuItemExists = orders.find(order => order.id === item.id)
@@ -32,9 +33,14 @@ export const useOrder = () => {
 
   const subTotal = useMemo(() => orders.reduce((total, order) => total + (order.price * order.quantity), 0), [orders])
 
+  const tipTotal = useMemo(() => subTotal * tip, [tip, orders])
+
   return {
     orders,
+    tip,
     subTotal,
+    tipTotal,
+    setTip,
     addItem,
     deleteItem
   }

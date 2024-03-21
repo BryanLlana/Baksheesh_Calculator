@@ -4,9 +4,10 @@ import { menuItems } from "./data"
 import { useOrder } from "./hooks/useOrder"
 import OrderContents from './components/OrderContents';
 import OrderTotals from "./components/OrderTotals";
+import TipPercentageForm from "./components/TipPercentageForm";
 
 const App = () => {
-  const { orders, subTotal, addItem, deleteItem } = useOrder()
+  const { orders, subTotal, tipTotal, tip, addItem, deleteItem, setTip } = useOrder()
   return (
     <>
       <Header />
@@ -22,7 +23,8 @@ const App = () => {
         </div>
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-5">
           <OrderContents orders={orders} deleteItem={deleteItem}/>
-          <OrderTotals subTotal={subTotal}/>
+          <TipPercentageForm setTip={setTip}/>
+          <OrderTotals subTotal={subTotal} tipTotal={tipTotal}/>
         </div>
       </main>
     </>
