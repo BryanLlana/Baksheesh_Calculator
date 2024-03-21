@@ -3,10 +3,11 @@ import { formatNumberToPen } from "../helpers"
 type Props = {
   subTotal: number,
   tipTotal: number,
-  totalAmount: number
+  totalAmount: number,
+  placeOrder: () => void
 }
 
-const OrderTotals = ({ subTotal, tipTotal, totalAmount }: Props) => {
+const OrderTotals = ({ subTotal, tipTotal, totalAmount, placeOrder }: Props) => {
   return (
     <>
       <div className="space-y-3">
@@ -21,6 +22,13 @@ const OrderTotals = ({ subTotal, tipTotal, totalAmount }: Props) => {
           <span className="font-bold"> {formatNumberToPen(totalAmount)}</span>
         </p>
       </div>
+
+      <button
+        className="w-full bg-black py-3 text-white font-bold mt-10 disabled:opacity-50"
+        onClick={() => placeOrder()}
+      >
+        Guardar Orden
+      </button>
     </>
   )
 }

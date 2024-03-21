@@ -1,23 +1,25 @@
 import { tipOptions } from "../data"
 
 type Props = {
+  tip: number,
   setTip: (tip: number) => void
 }
 
-const TipPercentageForm = ({setTip}: Props) => {
+const TipPercentageForm = ({tip, setTip}: Props) => {
   return (
     <div>
       <h3 className="font-bold text-2xl">Propina: </h3>
       <form>
-        { tipOptions.map(tip => (
-          <div key={tip.id} className="flex gap-2 items-center justify-between w-[70px]">
-            <label htmlFor={tip.id}>{tip.label}</label>
+        { tipOptions.map(tipOption => (
+          <div key={tipOption.id} className="flex gap-2 items-center justify-between w-[70px]">
+            <label htmlFor={tipOption.id}>{tipOption.label}</label>
             <input
               type="radio"
               name="tip"
-              id={tip.id}
-              value={tip.value}
+              id={tipOption.id}
+              value={tipOption.value}
               onChange={e => setTip(Number(e.target.value))}
+              checked={tipOption.value === tip}
             />
           </div>
         ))}

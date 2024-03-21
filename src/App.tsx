@@ -7,7 +7,7 @@ import OrderTotals from "./components/OrderTotals";
 import TipPercentageForm from "./components/TipPercentageForm";
 
 const App = () => {
-  const { orders, subTotal, tipTotal, totalAmount, addItem, deleteItem, setTip } = useOrder()
+  const { orders, subTotal, tipTotal, tip, totalAmount, addItem, deleteItem, placeOrder, setTip } = useOrder()
   return (
     <>
       <Header />
@@ -22,9 +22,13 @@ const App = () => {
           </div>
         </div>
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-5">
-          <OrderContents orders={orders} deleteItem={deleteItem}/>
-          <TipPercentageForm setTip={setTip}/>
-          <OrderTotals subTotal={subTotal} tipTotal={tipTotal} totalAmount={totalAmount}/>
+          {orders.length > 0 ? (
+            <>
+              <OrderContents orders={orders} deleteItem={deleteItem}/>
+              <TipPercentageForm tip={tip} setTip={setTip}/>
+              <OrderTotals subTotal={subTotal} tipTotal={tipTotal} totalAmount={totalAmount} placeOrder={placeOrder}/>
+            </> 
+          ) : <p className="text-center">La orden está vacía</p>}
         </div>
       </main>
     </>

@@ -11,9 +11,7 @@ const OrderContents = ({ orders, deleteItem }: Props) => {
     <div>
       <h2 className="font-bold text-4xl">Consumo</h2>
       <div className="mt-5">
-        {orders.length === 0 
-        ? <p className="text-center">La orden está vacía</p>
-        : ( orders.map(order => (
+        {orders.map(order => (
           <div key={order.id} className="flex justify-between items-center border-t border-gray-200 py-3 last-of-type:border-b">
             <div>
               <p className="text-lg">{order.name} - {formatNumberToPen(order.price)}</p>
@@ -25,8 +23,7 @@ const OrderContents = ({ orders, deleteItem }: Props) => {
             >X
             </button>
           </div>
-        )) )
-        }
+          ))}
       </div>
     </div>
   )

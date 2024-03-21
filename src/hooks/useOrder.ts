@@ -31,6 +31,11 @@ export const useOrder = () => {
     setOrders(updateOrders)
   }
 
+  const placeOrder = () => {
+    setOrders([])
+    setTip(0)
+  }
+
   const subTotal = useMemo(() => orders.reduce((total, order) => total + (order.price * order.quantity), 0), [orders])
 
   const tipTotal = useMemo(() => subTotal * tip, [tip, orders])
@@ -44,6 +49,7 @@ export const useOrder = () => {
     totalAmount,
     setTip,
     addItem,
+    placeOrder,
     deleteItem
   }
 }
